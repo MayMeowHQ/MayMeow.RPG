@@ -1,0 +1,102 @@
+﻿@model MayMeow.RPG.Entities.World.Character
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Character</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<MayMeow.RPG.Entities.World.Gender>()"></select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Experience" class="control-label"></label>
+                <input asp-for="Experience" class="form-control" />
+                <span asp-validation-for="Experience" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Money" class="control-label"></label>
+                <input asp-for="Money" class="form-control" />
+                <span asp-validation-for="Money" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Strength" class="control-label"></label>
+                <input asp-for="Strength" class="form-control" />
+                <span asp-validation-for="Strength" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Agility" class="control-label"></label>
+                <input asp-for="Agility" class="form-control" />
+                <span asp-validation-for="Agility" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Constitution" class="control-label"></label>
+                <input asp-for="Constitution" class="form-control" />
+                <span asp-validation-for="Constitution" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Intelligence" class="control-label"></label>
+                <input asp-for="Intelligence" class="form-control" />
+                <span asp-validation-for="Intelligence" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Charisma" class="control-label"></label>
+                <input asp-for="Charisma" class="form-control" />
+                <span asp-validation-for="Charisma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HitPoints" class="control-label"></label>
+                <input asp-for="HitPoints" class="form-control" />
+                <span asp-validation-for="HitPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalHitPoints" class="control-label"></label>
+                <input asp-for="TotalHitPoints" class="form-control" />
+                <span asp-validation-for="TotalHitPoints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OwnerId" class="control-label"></label>
+                <select asp-for="OwnerId" class ="form-control" asp-items="ViewBag.OwnerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdatedAt" class="control-label"></label>
+                <input asp-for="UpdatedAt" class="form-control" />
+                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RaceId" class="control-label"></label>
+                <select asp-for="RaceId" class ="form-control" asp-items="ViewBag.RaceId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

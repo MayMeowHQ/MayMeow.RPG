@@ -30,6 +30,12 @@ namespace MayMeow.RPG.Data
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                    "Admin_route",
+                    areaName: "Admin",
+                    pattern: "-/Admin/{controller=Home}/{action=Index}/{id?}"
+                );
+
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync("Hello World!");

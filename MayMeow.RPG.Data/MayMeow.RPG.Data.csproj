@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MayMeow.RPG.Common\MayMeow.RPG.Common.csproj" />
+    <ProjectReference Include="..\MayMeow.RPG.Entities\MayMeow.RPG.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

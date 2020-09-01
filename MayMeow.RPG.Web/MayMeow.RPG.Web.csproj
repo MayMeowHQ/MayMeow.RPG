@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-MayMeow.RPG.Web-33B993CC-68D4-4A3D-AD00-9D124BE8A688</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MayMeow.RPG.Common\MayMeow.RPG.Common.csproj" />
+    <ProjectReference Include="..\MayMeow.RPG.Data\MayMeow.RPG.Data.csproj" />
+    <ProjectReference Include="..\MayMeow.RPG.Entities\MayMeow.RPG.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

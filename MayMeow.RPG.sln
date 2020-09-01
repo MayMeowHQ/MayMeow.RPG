@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayMeow.RPG.Web", "MayMeow.RPG.Web\MayMeow.RPG.Web.csproj", "{042B1E97-5CD8-4332-A544-81F6E01D2065}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayMeow.RPG.Data", "MayMeow.RPG.Data\MayMeow.RPG.Data.csproj", "{9CCE21A7-2D52-4D7D-A69C-3748313FD0CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayMeow.RPG.Entities", "MayMeow.RPG.Entities\MayMeow.RPG.Entities.csproj", "{C51ECCD8-4F22-41C1-8615-AD627ACE7325}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayMeow.RPG.Common", "MayMeow.RPG.Common\MayMeow.RPG.Common.csproj", "{1C5E23BC-49D7-4554-8E5F-0CCBC20CFFA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{042B1E97-5CD8-4332-A544-81F6E01D2065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{042B1E97-5CD8-4332-A544-81F6E01D2065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{042B1E97-5CD8-4332-A544-81F6E01D2065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{042B1E97-5CD8-4332-A544-81F6E01D2065}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CCE21A7-2D52-4D7D-A69C-3748313FD0CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CCE21A7-2D52-4D7D-A69C-3748313FD0CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CCE21A7-2D52-4D7D-A69C-3748313FD0CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CCE21A7-2D52-4D7D-A69C-3748313FD0CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C51ECCD8-4F22-41C1-8615-AD627ACE7325}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C51ECCD8-4F22-41C1-8615-AD627ACE7325}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C51ECCD8-4F22-41C1-8615-AD627ACE7325}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C51ECCD8-4F22-41C1-8615-AD627ACE7325}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5E23BC-49D7-4554-8E5F-0CCBC20CFFA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5E23BC-49D7-4554-8E5F-0CCBC20CFFA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C5E23BC-49D7-4554-8E5F-0CCBC20CFFA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C5E23BC-49D7-4554-8E5F-0CCBC20CFFA7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A397AA5-DEFD-49AA-8918-7D2CD0FBE188}
+	EndGlobalSection
+EndGlobal

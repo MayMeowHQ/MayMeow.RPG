@@ -1,4 +1,5 @@
 ﻿using MayMeow.RPG.Entities.Identity;
+using MayMeow.RPG.Entities.World;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,5 +15,10 @@ namespace MayMeow.RPG.Data
             : base(options)
         {
         }
+
+        // DB Sets for World Entities
+        public DbSet<Character> Characters { get; set; }
+        public DbSet<Race> Races { get; set; }
+        public DbSet<Location> Locations { get; set; }
     }
 }

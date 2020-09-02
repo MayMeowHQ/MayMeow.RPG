@@ -41,6 +41,9 @@ namespace MayMeow.RPG.Entities.World
         public int RaceId { get; set; }
         [ForeignKey("RaceId")]
         public Race Race { get; set; }
+
+        // Active character
+        public bool IsActive { get; set; }
     }
 
     public enum Gender

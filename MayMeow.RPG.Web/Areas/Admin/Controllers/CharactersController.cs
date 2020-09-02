@@ -178,5 +178,18 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
         {
             return _context.Characters.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> SetActive(int id)
+        {
+            var character = await _context.Characters.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (character == null)
+            {
+                return NotFound();
+            }
+
+            await _characterManager.SetAsActive(character, character.OwnerId);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

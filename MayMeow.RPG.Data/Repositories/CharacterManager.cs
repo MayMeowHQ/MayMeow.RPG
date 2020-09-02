@@ -39,5 +39,31 @@ namespace MayMeow.RPG.Data.Repositories
 
             return character;
         }
+
+        public async Task SetAsActive(Character character, string OwnerId)
+        {
+            // select all users characters
+            var characters = await _dbContext.Characters
+                .Where(o => o.OwnerId == OwnerId)
+                .ToListAsync();
+
+            for (int i=0; i < characters.Count; i++)
+            {
+                if (characters[i].IsActive == true && character.Id == characters[i].Id)
+                {
+                    continue;
+                }
+                else if (characters[i].IsActive == false && character.Id == characters[i].Id)
+                {
+                    characters[i].IsActive = true;
+                }
+                else
+                {
+                    characters[i].IsActive = false;
+                }
+            }
+
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }

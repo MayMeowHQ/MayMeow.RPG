@@ -26,25 +26,7 @@
                 @Html.DisplayNameFor(model => model.Money)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Strength)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Agility)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Constitution)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Intelligence)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Charisma)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HitPoints)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalHitPoints)
+                @Html.DisplayNameFor(model => model.IsActive)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Owner)
@@ -77,25 +59,7 @@
                 @Html.DisplayFor(modelItem => item.Money)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Strength)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Agility)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Constitution)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Intelligence)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Charisma)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HitPoints)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalHitPoints)
+                @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Owner.Id)
@@ -113,6 +77,10 @@
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @if (item.IsActive == false)
+                {
+                   <a asp-action="SetActive" asp-route-id="@item.Id">Set As Active</a>
+                }
             </td>
         </tr>
 }

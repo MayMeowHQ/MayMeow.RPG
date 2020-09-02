@@ -9,5 +9,7 @@ namespace MayMeow.RPG.Data.Repositories
     public interface ICharacterManager
     {
         public Task<Character> Prepare(Character character);
+
+        public Task SetAsActive(Character character, string OwnerId);
     }
 }

@@ -40,6 +40,13 @@ namespace MayMeow.RPG.Data.Repositories
             return character;
         }
 
+        /// <summary>
+        /// Set Character as Active
+        /// 1 User can have only 1 character active at time
+        /// </summary>
+        /// <param name="character"></param>
+        /// <param name="OwnerId"></param>
+        /// <returns></returns>
         public async Task SetAsActive(Character character, string OwnerId)
         {
             // select all users characters
@@ -51,14 +58,17 @@ namespace MayMeow.RPG.Data.Repositories
             {
                 if (characters[i].IsActive == true && character.Id == characters[i].Id)
                 {
+                    // Do nothing character we want is already active
                     continue;
                 }
                 else if (characters[i].IsActive == false && character.Id == characters[i].Id)
                 {
+                    // This is character we want so active it
                     characters[i].IsActive = true;
                 }
                 else
                 {
+                    // Deactivate all other characters
                     characters[i].IsActive = false;
                 }
             }

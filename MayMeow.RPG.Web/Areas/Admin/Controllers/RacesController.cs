@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MayMeow.RPG.Data;
 using MayMeow.RPG.Entities.World;
 using Microsoft.AspNetCore.Authorization;
+using MayMeow.RPG.Data.Repositories;
 
 namespace MayMeow.RPG.Web.Areas.Admin.Controllers
 {
@@ -16,17 +17,19 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
     public class RacesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IRacesManager _racesManager;
 
-        public RacesController(ApplicationDbContext context)
+        public RacesController(ApplicationDbContext context, IRacesManager racesManager)
         {
             _context = context;
+            _racesManager = racesManager;
         }
 
         // GET: Admin/Races
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Races.Include(r => r.StartingLocation);
-            return View(await applicationDbContext.ToListAsync());
+            var allRaces = await _racesManager.All();
+            return View(allRaces);
         }
 
         // GET: Admin/Races/Details/5
@@ -37,9 +40,7 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var race = await _context.Races
-                .Include(r => r.StartingLocation)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var race = await _racesManager.Details(id); 
             if (race == null)
             {
                 return NotFound();

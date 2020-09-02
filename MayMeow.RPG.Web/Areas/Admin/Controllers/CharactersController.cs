@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using MayMeow.RPG.Data;
 using MayMeow.RPG.Entities.World;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using MayMeow.RPG.Entities.Identity;
+using MayMeow.RPG.Data.Repositories;
 
 namespace MayMeow.RPG.Web.Areas.Admin.Controllers
 {
@@ -16,10 +19,14 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
     public class CharactersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ICharacterManager _characterManager;
 
-        public CharactersController(ApplicationDbContext context)
+        public CharactersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, ICharacterManager characterManager)
         {
             _context = context;
+            _userManager = userManager;
+            _characterManager = characterManager;
         }
 
         // GET: Admin/Characters
@@ -53,7 +60,7 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewData["OwnerId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["RaceId"] = new SelectList(_context.Races, "Id", "Id");
+            ViewData["RaceId"] = new SelectList(_context.Races, "Id", "Name");
             return View();
         }
 
@@ -62,8 +69,14 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Gender,Experience,Money,Strength,Agility,Constitution,Intelligence,Charisma,HitPoints,TotalHitPoints,OwnerId,CreatedAt,UpdatedAt,RaceId")] Character character)
+        public async Task<IActionResult> Create([Bind("Id,Name,Gender,OwnerId,CreatedAt,UpdatedAt,RaceId")] Character character)
         {
+            // TODO move to User's Character controller
+            // var user = await _userManager.GetUserAsync(User);
+            // character.OwnerId = user.Id;
+
+            character = await _characterManager.Prepare(character);
+
             if (ModelState.IsValid)
             {
                 _context.Add(character);
@@ -71,7 +84,7 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["OwnerId"] = new SelectList(_context.Users, "Id", "Id", character.OwnerId);
-            ViewData["RaceId"] = new SelectList(_context.Races, "Id", "Id", character.RaceId);
+            ViewData["RaceId"] = new SelectList(_context.Races, "Id", "Name", character.RaceId);
             return View(character);
         }
 

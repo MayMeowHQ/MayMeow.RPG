@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MayMeow.RPG.Entities.Identity;
 using MayMeow.RPG.Data;
+using MayMeow.RPG.Data.Repositories;
 
 namespace MayMeow.RPG.Web
 {
@@ -35,6 +36,9 @@ namespace MayMeow.RPG.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddScoped<IRacesManager, RacesManager>();
+            services.AddScoped<ICharacterManager, CharacterManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

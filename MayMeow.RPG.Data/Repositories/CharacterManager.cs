@@ -1,4 +1,5 @@
-﻿using MayMeow.RPG.Entities.World;
+﻿using MayMeow.RPG.Entities.Identity;
+using MayMeow.RPG.Entities.World;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace MayMeow.RPG.Data.Repositories
             _dbContext = dbContext;
         }
 
+        public async Task<Character> GetActiveCharacter(ApplicationUser owner)
+        {
+            return await _dbContext.Characters.FirstOrDefaultAsync(c => c.OwnerId == owner.Id && c.IsActive == true);
+        }
+
         /// <summary>
         /// Set attributes and location based on race
         /// </summary>
@@ -31,6 +37,9 @@ namespace MayMeow.RPG.Data.Repositories
             character.Charisma = race.Charisma;
             character.Constitution = race.Constitution;
             character.Intelligence = race.Intelligence;
+
+            // Set starting location as current location
+            character.CurrentLocationId = race.StartingLocationId;
 
             // Set character date time informations
             var currentDate = DateTime.UtcNow;

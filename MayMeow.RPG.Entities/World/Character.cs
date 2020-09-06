@@ -41,7 +41,6 @@ namespace MayMeow.RPG.Entities.World
 
         // Race information
         public int RaceId { get; set; }
-        [Required]
         [ForeignKey("RaceId")]
         public Race Race { get; set; }
 

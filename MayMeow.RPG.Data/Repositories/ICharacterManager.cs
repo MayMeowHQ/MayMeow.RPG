@@ -1,4 +1,5 @@
-﻿using MayMeow.RPG.Entities.World;
+﻿using MayMeow.RPG.Entities.Identity;
+using MayMeow.RPG.Entities.World;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace MayMeow.RPG.Data.Repositories
 {
     public interface ICharacterManager
     {
+        public Task<Character> GetActiveCharacter(ApplicationUser owner);
         public Task<Character> Prepare(Character character);
 
         public Task SetAsActive(Character character, string OwnerId);

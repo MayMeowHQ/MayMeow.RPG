@@ -35,6 +35,7 @@ namespace MayMeow.RPG.Web.Controllers
 
             var applicationDbContext = _context.Characters
                 .Where(c => c.OwnerId == user.Id)
+                .Include(c => c.CurrentLocation)
                 .Include(c => c.Owner).Include(c => c.Race);
             return View(await applicationDbContext.ToListAsync());
         }

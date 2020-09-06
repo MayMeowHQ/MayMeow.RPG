@@ -1,4 +1,5 @@
 ﻿using MayMeow.RPG.Data;
+using MayMeow.RPG.Data.Repositories;
 using MayMeow.RPG.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,13 @@ namespace MayMeow.RPG.Web.ViewComponents
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ICharacterManager characterManager;
 
-        public ActiveCharacter(ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager)
+        public ActiveCharacter(ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager, ICharacterManager characterManager)
         {
             _dbContext = dbContext;
             _userManager = userManager;
+            this.characterManager = characterManager;
         }
 
         /// <summary>
@@ -28,10 +31,7 @@ namespace MayMeow.RPG.Web.ViewComponents
         {
             // This is how you can get Logged-in user in view components
             var user = await _userManager.GetUserAsync(UserClaimsPrincipal);
-
-            var result = _dbContext.Characters
-                //.Where(m => m.IsActive == true)
-                .FirstOrDefault(m => m.IsActive == true && m.OwnerId == user.Id);
+            var result = await this.characterManager.GetActiveCharacter(user);
 
             return View(result);
         }

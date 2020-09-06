@@ -39,6 +39,7 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
             var location = await _context.Locations
                 .Include(l => l.ParrentLocations).ThenInclude(c => c.Parent)
                 .Include(l => l.ChildLocations).ThenInclude(p => p.Child)
+                .Include(l => l.Characters)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (location == null)

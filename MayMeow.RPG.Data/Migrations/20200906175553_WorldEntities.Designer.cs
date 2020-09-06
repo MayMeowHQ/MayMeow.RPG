@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MayMeow.RPG.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200901193033_WorldEntities")]
+    [Migration("20200906175553_WorldEntities")]
     partial class WorldEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,6 +105,9 @@ namespace MayMeow.RPG.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CurrentLocationId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Experience")
                         .HasColumnType("int");
 
@@ -116,6 +119,9 @@ namespace MayMeow.RPG.Data.Migrations
 
                     b.Property<int>("Intelligence")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Money")
                         .HasColumnType("int");
@@ -140,11 +146,31 @@ namespace MayMeow.RPG.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CurrentLocationId");
+
                     b.HasIndex("OwnerId");
 
                     b.HasIndex("RaceId");
 
                     b.ToTable("Characters");
+                });
+
+            modelBuilder.Entity("MayMeow.RPG.Entities.World.ConnectedLocation", b =>
+                {
+                    b.Property<int>("ChildId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("ChildId", "ParentId");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("ConnectedLocations");
                 });
 
             modelBuilder.Entity("MayMeow.RPG.Entities.World.Location", b =>
@@ -340,14 +366,35 @@ namespace MayMeow.RPG.Data.Migrations
 
             modelBuilder.Entity("MayMeow.RPG.Entities.World.Character", b =>
                 {
+                    b.HasOne("MayMeow.RPG.Entities.World.Location", "CurrentLocation")
+                        .WithMany("Characters")
+                        .HasForeignKey("CurrentLocationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("MayMeow.RPG.Entities.Identity.ApplicationUser", "Owner")
-                        .WithMany()
+                        .WithMany("Characters")
                         .HasForeignKey("OwnerId");
 
                     b.HasOne("MayMeow.RPG.Entities.World.Race", "Race")
-                        .WithMany()
+                        .WithMany("Characters")
                         .HasForeignKey("RaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MayMeow.RPG.Entities.World.ConnectedLocation", b =>
+                {
+                    b.HasOne("MayMeow.RPG.Entities.World.Location", "Child")
+                        .WithMany("ParrentLocations")
+                        .HasForeignKey("ChildId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("MayMeow.RPG.Entities.World.Location", "Parent")
+                        .WithMany("ChildLocations")
+                        .HasForeignKey("ParentId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 

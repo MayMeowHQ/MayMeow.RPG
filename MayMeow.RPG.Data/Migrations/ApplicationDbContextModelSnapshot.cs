@@ -103,6 +103,9 @@ namespace MayMeow.RPG.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CurrentLocationId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Experience")
                         .HasColumnType("int");
 
@@ -140,6 +143,8 @@ namespace MayMeow.RPG.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CurrentLocationId");
 
                     b.HasIndex("OwnerId");
 
@@ -359,14 +364,20 @@ namespace MayMeow.RPG.Data.Migrations
 
             modelBuilder.Entity("MayMeow.RPG.Entities.World.Character", b =>
                 {
+                    b.HasOne("MayMeow.RPG.Entities.World.Location", "CurrentLocation")
+                        .WithMany("Characters")
+                        .HasForeignKey("CurrentLocationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("MayMeow.RPG.Entities.Identity.ApplicationUser", "Owner")
                         .WithMany("Characters")
                         .HasForeignKey("OwnerId");
 
                     b.HasOne("MayMeow.RPG.Entities.World.Race", "Race")
-                        .WithMany()
+                        .WithMany("Characters")
                         .HasForeignKey("RaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 

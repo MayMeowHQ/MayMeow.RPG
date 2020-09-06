@@ -11,7 +11,9 @@ namespace MayMeow.RPG.Entities.World
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public virtual ICollection<ConnectedLocation> ParrentLocations { get; set; }
-        public virtual ICollection<ConnectedLocation> ChildLocations { get; set; }
+        public ICollection<ConnectedLocation> ParrentLocations { get; set; }
+        public ICollection<ConnectedLocation> ChildLocations { get; set; }
+
+        public ICollection<Character> Characters { get; set; }
     }
 }

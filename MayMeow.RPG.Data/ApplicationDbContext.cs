@@ -39,6 +39,16 @@ namespace MayMeow.RPG.Data
                 .HasForeignKey(cl => cl.ChildId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<Character>()
+                .HasOne(c => c.Race)
+                .WithMany(r => r.Characters)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Character>()
+                .HasOne(c => c.CurrentLocation)
+                .WithMany(l => l.Characters)
+                .OnDelete(DeleteBehavior.Restrict);
+
             base.OnModelCreating(builder);
         }
     }

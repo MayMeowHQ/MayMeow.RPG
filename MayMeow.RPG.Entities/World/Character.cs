@@ -1,6 +1,8 @@
 ﻿using MayMeow.RPG.Entities.Identity;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,11 +41,17 @@ namespace MayMeow.RPG.Entities.World
 
         // Race information
         public int RaceId { get; set; }
+        [Required]
         [ForeignKey("RaceId")]
         public Race Race { get; set; }
 
         // Active character
         public bool IsActive { get; set; }
+
+        // Information of location
+        public int CurrentLocationId { get; set; }
+        [ForeignKey("CurrentLocationId")]
+        public Location CurrentLocation { get; set; }
     }
 
     public enum Gender

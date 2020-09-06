@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200901193033_WorldEntities.cs" />
+    <Compile Remove="Migrations\20200901193033_WorldEntities.Designer.cs" />
     <Compile Remove="Migrations\20200902125049_AddActiveCharacters.cs" />
     <Compile Remove="Migrations\20200902125049_AddActiveCharacters.Designer.cs" />
+    <Compile Remove="Migrations\20200902132212_AddActiveCharacters.cs" />
+    <Compile Remove="Migrations\20200902132212_AddActiveCharacters.Designer.cs" />
     <Compile Remove="Migrations\20200906144824_AddConnectedLocations.cs" />
     <Compile Remove="Migrations\20200906144824_AddConnectedLocations.Designer.cs" />
     <Compile Remove="Migrations\20200906152748_AddConnectedLocationsSetup.cs" />
@@ -19,6 +23,16 @@
     <Compile Remove="Migrations\20200906153321_AddConnectedLocations2.Designer.cs" />
     <Compile Remove="Migrations\20200906162242_AddConnectedLocations3.cs" />
     <Compile Remove="Migrations\20200906162242_AddConnectedLocations3.Designer.cs" />
+    <Compile Remove="Migrations\20200906164025_AddConnectedLocations.cs" />
+    <Compile Remove="Migrations\20200906164025_AddConnectedLocations.Designer.cs" />
+    <Compile Remove="Migrations\20200906165058_AddCurrentLocationToCharacter.cs" />
+    <Compile Remove="Migrations\20200906165058_AddCurrentLocationToCharacter.Designer.cs" />
+    <Compile Remove="Migrations\20200906165835_WorldEntities.cs" />
+    <Compile Remove="Migrations\20200906165835_WorldEntities.Designer.cs" />
+    <Compile Remove="Migrations\20200906170156_WorldEntities.cs" />
+    <Compile Remove="Migrations\20200906170156_WorldEntities.Designer.cs" />
+    <Compile Remove="Migrations\20200906175312_WorldEntities.cs" />
+    <Compile Remove="Migrations\20200906175312_WorldEntities.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

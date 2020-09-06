@@ -22,6 +22,31 @@ namespace MayMeow.RPG.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ConnectedLocations",
+                columns: table => new
+                {
+                    ParentId = table.Column<int>(nullable: false),
+                    ChildId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConnectedLocations", x => new { x.ChildId, x.ParentId });
+                    table.ForeignKey(
+                        name: "FK_ConnectedLocations_Locations_ChildId",
+                        column: x => x.ChildId,
+                        principalTable: "Locations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ConnectedLocations_Locations_ParentId",
+                        column: x => x.ParentId,
+                        principalTable: "Locations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Races",
                 columns: table => new
                 {
@@ -67,11 +92,19 @@ namespace MayMeow.RPG.Data.Migrations
                     OwnerId = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false),
-                    RaceId = table.Column<int>(nullable: false)
+                    RaceId = table.Column<int>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    CurrentLocationId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Characters", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Characters_Locations_CurrentLocationId",
+                        column: x => x.CurrentLocationId,
+                        principalTable: "Locations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Characters_AspNetUsers_OwnerId",
                         column: x => x.OwnerId,
@@ -83,8 +116,13 @@ namespace MayMeow.RPG.Data.Migrations
                         column: x => x.RaceId,
                         principalTable: "Races",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Characters_CurrentLocationId",
+                table: "Characters",
+                column: "CurrentLocationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Characters_OwnerId",
@@ -97,6 +135,11 @@ namespace MayMeow.RPG.Data.Migrations
                 column: "RaceId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ConnectedLocations_ParentId",
+                table: "ConnectedLocations",
+                column: "ParentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Races_StartingLocationId",
                 table: "Races",
                 column: "StartingLocationId");
@@ -106,6 +149,9 @@ namespace MayMeow.RPG.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Characters");
+
+            migrationBuilder.DropTable(
+                name: "ConnectedLocations");
 
             migrationBuilder.DropTable(
                 name: "Races");

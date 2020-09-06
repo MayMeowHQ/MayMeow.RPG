@@ -23,5 +23,7 @@ namespace MayMeow.RPG.Entities.World
         public int StartingLocationId { get; set; }
         [ForeignKey("StartingLocationId")]
         public Location StartingLocation { get; set; }
+
+        public ICollection<Character> Characters { get; set; }
     }
 }

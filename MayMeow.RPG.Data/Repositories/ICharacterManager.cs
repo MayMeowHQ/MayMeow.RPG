@@ -13,5 +13,9 @@ namespace MayMeow.RPG.Data.Repositories
         public Task<Character> Prepare(Character character);
 
         public Task SetAsActive(Character character, string OwnerId);
+
+        public Task<Location> GetCurrentLocation(Character character);
+
+        public Task MoveTo(Character character, int locationId);
     }
 }

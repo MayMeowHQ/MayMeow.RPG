@@ -22,6 +22,23 @@ namespace MayMeow.RPG.Data.Repositories
             return await _dbContext.Characters.FirstOrDefaultAsync(c => c.OwnerId == owner.Id && c.IsActive == true);
         }
 
+        public async Task<Location> GetCurrentLocation(Character character)
+        {
+            var location = await _dbContext.Locations
+                .Include(l => l.ParrentLocations).ThenInclude(c => c.Parent)
+                .Include(l => l.ChildLocations).ThenInclude(p => p.Child)
+                .Include(l => l.Characters)
+                .FirstOrDefaultAsync(m => m.Id == character.CurrentLocationId);
+
+            return location;
+        }
+
+        public async Task MoveTo(Character character, int locationId)
+        {
+            character.CurrentLocationId = locationId;
+            await _dbContext.SaveChangesAsync();
+        }
+
         /// <summary>
         /// Set attributes and location based on race
         /// </summary>

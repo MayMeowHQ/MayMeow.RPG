@@ -20,5 +20,6 @@ namespace MayMeow.RPG.Data
         public DbSet<Character> Characters { get; set; }
         public DbSet<Race> Races { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<ConnectedLocation> ConnectedLocations { get; set; }
     }
 }

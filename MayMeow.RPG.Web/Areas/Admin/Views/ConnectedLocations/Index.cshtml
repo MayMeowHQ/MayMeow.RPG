@@ -26,10 +26,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Parent.Id)
+                @Html.DisplayFor(modelItem => item.Parent.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Child.Id)
+                @Html.DisplayFor(modelItem => item.Child.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

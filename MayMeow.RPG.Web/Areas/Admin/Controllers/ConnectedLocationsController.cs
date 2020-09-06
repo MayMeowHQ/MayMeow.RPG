@@ -52,8 +52,8 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
         // GET: Admin/ConnectedLocations/Create
         public IActionResult Create()
         {
-            ViewData["ChildId"] = new SelectList(_context.Locations, "Id", "Id");
-            ViewData["ParentId"] = new SelectList(_context.Locations, "Id", "Id");
+            ViewData["ChildId"] = new SelectList(_context.Locations, "Id", "Name");
+            ViewData["ParentId"] = new SelectList(_context.Locations, "Id", "Name");
             return View();
         }
 
@@ -70,8 +70,8 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ChildId"] = new SelectList(_context.Locations, "Id", "Id", connectedLocation.ChildId);
-            ViewData["ParentId"] = new SelectList(_context.Locations, "Id", "Id", connectedLocation.ParentId);
+            ViewData["ChildId"] = new SelectList(_context.Locations, "Id", "Name", connectedLocation.ChildId);
+            ViewData["ParentId"] = new SelectList(_context.Locations, "Id", "Name", connectedLocation.ParentId);
             return View(connectedLocation);
         }
 
@@ -88,8 +88,8 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["ChildId"] = new SelectList(_context.Locations, "Id", "Id", connectedLocation.ChildId);
-            ViewData["ParentId"] = new SelectList(_context.Locations, "Id", "Id", connectedLocation.ParentId);
+            ViewData["ChildId"] = new SelectList(_context.Locations, "Id", "Name", connectedLocation.ChildId);
+            ViewData["ParentId"] = new SelectList(_context.Locations, "Id", "Name", connectedLocation.ParentId);
             return View(connectedLocation);
         }
 
@@ -125,8 +125,8 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ChildId"] = new SelectList(_context.Locations, "Id", "Id", connectedLocation.ChildId);
-            ViewData["ParentId"] = new SelectList(_context.Locations, "Id", "Id", connectedLocation.ParentId);
+            ViewData["ChildId"] = new SelectList(_context.Locations, "Id", "Name", connectedLocation.ChildId);
+            ViewData["ParentId"] = new SelectList(_context.Locations, "Id", "Name", connectedLocation.ParentId);
             return View(connectedLocation);
         }
 

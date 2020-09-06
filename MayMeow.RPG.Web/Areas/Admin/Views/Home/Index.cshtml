@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Administration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Administration</h1>
+
+<ul>
+    <li class="p-2">
+        <a asp-action="Index" asp-area="Admin" asp-controller="Characters" class="btn btn-primary">Characters</a>
+    </li>
+    <li class="p-2">
+        <a asp-action="Index" asp-area="Admin" asp-controller="Locations" class="btn btn-primary">Locations</a>
+    </li>
+    <li class="p-2">
+        <a asp-action="Index" asp-area="Admin" asp-controller="Races" class="btn btn-primary">Races</a>
+    </li>
+</ul>

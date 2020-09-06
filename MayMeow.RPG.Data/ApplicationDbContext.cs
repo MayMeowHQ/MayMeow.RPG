@@ -21,5 +21,25 @@ namespace MayMeow.RPG.Data
         public DbSet<Race> Races { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<ConnectedLocation> ConnectedLocations { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<ConnectedLocation>()
+               .HasKey(cl => new { cl.ChildId, cl.ParentId });
+
+            builder.Entity<ConnectedLocation>()
+                .HasOne(cl => cl.Parent)
+                .WithMany(cl => cl.ChildLocations)
+                .HasForeignKey(cl => cl.ParentId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<ConnectedLocation>()
+                .HasOne(cl => cl.Child)
+                .WithMany(cl => cl.ParrentLocations)
+                .HasForeignKey(cl => cl.ChildId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            base.OnModelCreating(builder);
+        }
     }
 }

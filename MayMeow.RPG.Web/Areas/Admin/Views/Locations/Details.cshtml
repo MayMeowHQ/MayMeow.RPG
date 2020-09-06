@@ -25,6 +25,31 @@
         </dd>
     </dl>
 </div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>Connected locations</th>
+        </tr>
+        @foreach (var parentLocation in Model.ParrentLocations)
+        {
+            <tr>
+                <td>
+                    Go back to <a asp-action="Details" asp-route-id="@parentLocation.Parent.Id">@parentLocation.Parent.Name</a>
+                </td>
+            </tr>
+        }
+        @foreach (var childLocation in Model.ChildLocations)
+        {
+            <tr>
+                <td>
+                    Go to <a asp-action="Details" asp-route-id="@childLocation.Child.Id">@childLocation.Child.Name</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

@@ -150,20 +150,16 @@ namespace MayMeow.RPG.Data.Migrations
 
             modelBuilder.Entity("MayMeow.RPG.Entities.World.ConnectedLocation", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int>("ChildId")
                         .HasColumnType("int");
 
                     b.Property<int>("ParentId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
-                    b.HasIndex("ChildId");
+                    b.HasKey("ChildId", "ParentId");
 
                     b.HasIndex("ParentId");
 
@@ -377,15 +373,15 @@ namespace MayMeow.RPG.Data.Migrations
             modelBuilder.Entity("MayMeow.RPG.Entities.World.ConnectedLocation", b =>
                 {
                     b.HasOne("MayMeow.RPG.Entities.World.Location", "Child")
-                        .WithMany()
+                        .WithMany("ParrentLocations")
                         .HasForeignKey("ChildId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("MayMeow.RPG.Entities.World.Location", "Parent")
-                        .WithMany()
+                        .WithMany("ChildLocations")
                         .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 

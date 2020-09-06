@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MayMeow.RPG.Entities.World
+namespace MayMeow.RPG.Web.ViewModels
 {
-    public class Location
+    public class LocationViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
-        public virtual ICollection<ConnectedLocation> ParrentLocations { get; set; }
-        public virtual ICollection<ConnectedLocation> ChildLocations { get; set; }
     }
 }

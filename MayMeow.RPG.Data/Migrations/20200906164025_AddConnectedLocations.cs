@@ -10,14 +10,13 @@ namespace MayMeow.RPG.Data.Migrations
                 name: "ConnectedLocations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     ParentId = table.Column<int>(nullable: false),
-                    ChildId = table.Column<int>(nullable: false)
+                    ChildId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ConnectedLocations", x => x.Id);
+                    table.PrimaryKey("PK_ConnectedLocations", x => new { x.ChildId, x.ParentId });
                     table.ForeignKey(
                         name: "FK_ConnectedLocations_Locations_ChildId",
                         column: x => x.ChildId,
@@ -31,11 +30,6 @@ namespace MayMeow.RPG.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ConnectedLocations_ChildId",
-                table: "ConnectedLocations",
-                column: "ChildId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ConnectedLocations_ParentId",

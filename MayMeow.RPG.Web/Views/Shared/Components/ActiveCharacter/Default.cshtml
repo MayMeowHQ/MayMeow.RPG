@@ -6,8 +6,11 @@
 
 @model MayMeow.RPG.Entities.World.Character
 
-<li class="nav-item">
-    <a href="#" class="nav-link">
-        as <span class="badge badge-primary">@Model.Name</span>
-    </a>
-</li>
+@if (Model != null)
+{
+    <li class="nav-item">
+        <a href="#" class="nav-link">
+            as <span class="badge badge-primary">@Model.Name</span>
+        </a>
+    </li>
+}

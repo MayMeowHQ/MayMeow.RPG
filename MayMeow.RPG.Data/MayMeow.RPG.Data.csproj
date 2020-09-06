@@ -7,6 +7,18 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200902125049_AddActiveCharacters.cs" />
     <Compile Remove="Migrations\20200902125049_AddActiveCharacters.Designer.cs" />
+    <Compile Remove="Migrations\20200906144824_AddConnectedLocations.cs" />
+    <Compile Remove="Migrations\20200906144824_AddConnectedLocations.Designer.cs" />
+    <Compile Remove="Migrations\20200906152748_AddConnectedLocationsSetup.cs" />
+    <Compile Remove="Migrations\20200906152748_AddConnectedLocationsSetup.Designer.cs" />
+    <Compile Remove="Migrations\20200906152927_AddConnectedLocations.cs" />
+    <Compile Remove="Migrations\20200906152927_AddConnectedLocations.Designer.cs" />
+    <Compile Remove="Migrations\20200906152949_AddConnectedLocations2.cs" />
+    <Compile Remove="Migrations\20200906152949_AddConnectedLocations2.Designer.cs" />
+    <Compile Remove="Migrations\20200906153321_AddConnectedLocations2.cs" />
+    <Compile Remove="Migrations\20200906153321_AddConnectedLocations2.Designer.cs" />
+    <Compile Remove="Migrations\20200906162242_AddConnectedLocations3.cs" />
+    <Compile Remove="Migrations\20200906162242_AddConnectedLocations3.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -20,6 +20,9 @@ What want to do and wat is done.
 * [x] Move Trough Locations
 * [x] Multiple characters per login
 * [x] Set/Change Active Character
+* [ ] Leveling system, experience gain
+* [ ] HitPoint system (decrease & restore)
+* [ ] Player or NPC characters
 
 ### Items
 
@@ -45,7 +48,14 @@ What want to do and wat is done.
 ### Races
 
 * [x] Manage Races
+* [ ] Playable/not playable races setting
 
 ### Skills
 
 * [ ] Manage skills
+
+### Worker
+
+Automation for some entities like health restoring
+
+* [ ] Restore health

@@ -21,6 +21,11 @@ What want to do and wat is done.
 * [x] Multiple characters per login
 * [x] Set/Change Active Character
 
+### Items
+
+* [ ] Manage items
+* [ ] Item types
+
 ### Locations
 
 * [x] Manage Locations
@@ -28,6 +33,7 @@ What want to do and wat is done.
 * [x] Characters in location
 * [x] Show connected locations in details
 * [x] Move trough locations
+* [ ] Inventory (like shops, bars, restaurants)
 
 ### Playground
 

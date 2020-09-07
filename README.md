@@ -2,6 +2,10 @@
 
 🛡⚔ Web based online role playing game
 
+## Motivation
+
+Why RPG? Because role playing is fun and can bost your imagination and creativity. Mostly tutorials are about same: create blog, create link aggregator i wanted something else but wanted to learn most of language. This one is currently writeen with .Net Core 3.1. And now you can see how it's working One-to-One, One-To-Many, Many-To-Many (and self referencing too) relations between models. I have used ViewComponents and repositories pattern and more will come.
+
 ## Direction
 
 What want to do and wat is done.
@@ -59,3 +63,13 @@ What want to do and wat is done.
 Automation for some entities like health restoring
 
 * [ ] Restore health
+
+## Contributing
+
+Please follow conventions and directions. If you any idea what can you do or want to add you can open issue.
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D

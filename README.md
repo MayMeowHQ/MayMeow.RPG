@@ -6,6 +6,10 @@
 
 What want to do and wat is done.
 
+### Administration zone
+
+* [ ] More user friendly admin pages
+
 ### Characters
 
 * [x] Manage characters (Create, Edit, Delete)

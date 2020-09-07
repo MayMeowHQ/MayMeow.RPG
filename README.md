@@ -66,7 +66,7 @@ Automation for some entities like health restoring
 
 ## Contributing
 
-Please follow conventions and directions. If you any idea what can you do or want to add you can open issue.
+Please follow conventions and directions. If you any idea what can you do or want to add you can open issue. For now i don't want to include too much external packages. So if you want add some ask first by opening issue.
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`

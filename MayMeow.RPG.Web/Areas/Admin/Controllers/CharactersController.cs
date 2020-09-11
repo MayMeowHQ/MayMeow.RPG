@@ -75,7 +75,7 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
             // var user = await _userManager.GetUserAsync(User);
             // character.OwnerId = user.Id;
 
-            character = await _characterManager.Prepare(character);
+            character = await _characterManager.Prepare(character, true);
 
             if (ModelState.IsValid)
             {

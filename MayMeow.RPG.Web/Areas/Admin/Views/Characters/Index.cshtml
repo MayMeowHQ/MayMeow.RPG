@@ -48,6 +48,10 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
+                @if (item.Playable == false)
+                {
+                    <span class="badge badge-dark">NPC</span>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Gender)

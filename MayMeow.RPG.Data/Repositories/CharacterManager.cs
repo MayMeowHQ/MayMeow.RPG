@@ -43,10 +43,14 @@ namespace MayMeow.RPG.Data.Repositories
         /// Set attributes and location based on race
         /// </summary>
         /// <param name="character"></param>
+        /// <param name="playable"></param>
         /// <returns></returns>
-        public async Task<Character> Prepare(Character character)
+        public async Task<Character> Prepare(Character character, bool playable = false)
         {
             var race = await _dbContext.Races.FirstOrDefaultAsync(r => r.Id == character.RaceId);
+
+            // Settings for NPC characters
+            character.Playable = playable;
 
             // Set attributes
             character.Strength = race.Strength;

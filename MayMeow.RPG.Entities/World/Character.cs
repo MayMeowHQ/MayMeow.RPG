@@ -51,6 +51,9 @@ namespace MayMeow.RPG.Entities.World
         public int CurrentLocationId { get; set; }
         [ForeignKey("CurrentLocationId")]
         public Location CurrentLocation { get; set; }
+
+        // Settings for Non-Player characters
+        public bool Playable { get; set; }
     }
 
     public enum Gender

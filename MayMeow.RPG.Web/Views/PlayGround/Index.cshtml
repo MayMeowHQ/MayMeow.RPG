@@ -59,7 +59,11 @@
         {
             <tr>
                 <td>
-                    Go back to <a asp-action="Details" asp-route-id="@character.Id">@character.Name</a>
+                    <a asp-action="Details" asp-route-id="@character.Id">@character.Name</a>
+                    @if (character.Playable == false)
+                    {
+                        <span class="badge badge-dark">NPC</span>
+                    }
                 </td>
             </tr>
         }

@@ -10,7 +10,7 @@ namespace MayMeow.RPG.Data.Repositories
     public interface ICharacterManager
     {
         public Task<Character> GetActiveCharacter(ApplicationUser owner);
-        public Task<Character> Prepare(Character character);
+        public Task<Character> Prepare(Character character, bool playable = false);
 
         public Task SetAsActive(Character character, string OwnerId);
 

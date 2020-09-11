@@ -74,6 +74,12 @@ namespace MayMeow.RPG.Web
                     pattern: "-/Admin/{controller=Home}/{action=Index}/{id?}"
                 );
 
+                endpoints.MapAreaControllerRoute(
+                    "Api_route",
+                    areaName: "Api",
+                    pattern: "Api/{controller=Home}/{action=Index}/{id?}"
+                );
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

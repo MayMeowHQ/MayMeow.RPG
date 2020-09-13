@@ -73,15 +73,18 @@ namespace MayMeow.RPG.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Gender,Experience,Money,Strength,Agility,Constitution,Intelligence,Charisma,HitPoints,TotalHitPoints,OwnerId,CreatedAt,UpdatedAt,RaceId,IsActive")] Character character)
+        public async Task<IActionResult> Create([Bind("Id,Name,Gender,RaceId")] Character character)
         {
+            var owner = await this.userManager.GetUserAsync(User);
+            character = await this.characterManager.Prepare(character, true);
+            character.OwnerId = owner.Id;
+
             if (ModelState.IsValid)
             {
                 _context.Add(character);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OwnerId"] = new SelectList(_context.Users, "Id", "Id", character.OwnerId);
             ViewData["RaceId"] = new SelectList(_context.Races, "Id", "Id", character.RaceId);
             return View(character);
         }

@@ -10,6 +10,10 @@ Why RPG? Because role playing is fun and can bost your imagination and creativit
 
 What want to do and wat is done.
 
+## Name
+
+* [ ] Finding good name for this game.
+
 ### Administration zone
 
 * [ ] More user friendly admin pages

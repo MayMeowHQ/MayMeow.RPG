@@ -61,7 +61,7 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Strength,Agility,Constitution,Intelligence,Charisma,StartingLocationId")] Race race)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Strength,Agility,Constitution,Intelligence,Charisma,StartingLocationId,Playable")] Race race)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace MayMeow.RPG.Web.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Strength,Agility,Constitution,Intelligence,Charisma,StartingLocationId")] Race race)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Strength,Agility,Constitution,Intelligence,Charisma,StartingLocationId,Playable")] Race race)
         {
             if (id != race.Id)
             {

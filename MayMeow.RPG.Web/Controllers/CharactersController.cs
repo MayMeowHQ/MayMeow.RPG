@@ -64,7 +64,7 @@ namespace MayMeow.RPG.Web.Controllers
         public IActionResult Create()
         {
             ViewData["OwnerId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["RaceId"] = new SelectList(_context.Races, "Id", "Id");
+            ViewData["RaceId"] = new SelectList(_context.Races.Where(r => r.Playable == true), "Id", "Name");
             return View();
         }
 
@@ -85,7 +85,7 @@ namespace MayMeow.RPG.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RaceId"] = new SelectList(_context.Races, "Id", "Id", character.RaceId);
+            ViewData["RaceId"] = new SelectList(_context.Races.Where(r => r.Playable == true), "Id", "Name", character.RaceId);
             return View(character);
         }
 
@@ -103,7 +103,7 @@ namespace MayMeow.RPG.Web.Controllers
                 return NotFound();
             }
             ViewData["OwnerId"] = new SelectList(_context.Users, "Id", "Id", character.OwnerId);
-            ViewData["RaceId"] = new SelectList(_context.Races, "Id", "Id", character.RaceId);
+            ViewData["RaceId"] = new SelectList(_context.Races.Where(r => r.Playable == true), "Id", "Name", character.RaceId);
             return View(character);
         }
 
@@ -140,7 +140,7 @@ namespace MayMeow.RPG.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["OwnerId"] = new SelectList(_context.Users, "Id", "Id", character.OwnerId);
-            ViewData["RaceId"] = new SelectList(_context.Races, "Id", "Id", character.RaceId);
+            ViewData["RaceId"] = new SelectList(_context.Races.Where(r => r.Playable == true), "Id", "Name", character.RaceId);
             return View(character);
         }
 

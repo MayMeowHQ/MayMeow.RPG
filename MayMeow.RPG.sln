@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MayMeow.RPG.Entities", "May
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MayMeow.RPG.Common", "MayMeow.RPG.Common\MayMeow.RPG.Common.csproj", "{1C5E23BC-49D7-4554-8E5F-0CCBC20CFFA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MayMeow.RPG.Worker", "MayMeow.RPG.Worker\MayMeow.RPG.Worker.csproj", "{FF0D5351-5574-44D3-8972-7C426CDB5BFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MayMeow.RPG.Worker", "MayMeow.RPG.Worker\MayMeow.RPG.Worker.csproj", "{FF0D5351-5574-44D3-8972-7C426CDB5BFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
